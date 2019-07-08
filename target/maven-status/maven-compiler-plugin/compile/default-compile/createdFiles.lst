@@ -1,0 +1,9 @@
+com\edicursos\edicursos\model\Aluno.class
+com\edicursos\edicursos\rn\AlunoRN.class
+com\edicursos\edicursos\util\DAOFactory.class
+com\edicursos\edicursos\daoimpl\AlunoDAOImpl.class
+com\edicursos\edicursos\filter\CORSFilter.class
+com\edicursos\edicursos\model\Conta.class
+com\edicursos\edicursos\util\HibernateUtil.class
+com\edicursos\edicursos\ws\AlunoWS.class
+com\edicursos\edicursos\dao\AlunoDAO.class
