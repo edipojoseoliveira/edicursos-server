@@ -1,9 +1,13 @@
 C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\daoimpl\AlunoDAOImpl.java
-C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\dao\AlunoDAO.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\rn\ContaRN.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\ws\ContaWS.java
 C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\util\DAOFactory.java
-C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\util\HibernateUtil.java
 C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\model\Aluno.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\dao\ContaDAO.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\filter\CORSFilter.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\dao\AlunoDAO.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\util\HibernateUtil.java
+C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\daoimpl\ContaDAOImpl.java
 C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\model\Conta.java
 C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\ws\AlunoWS.java
-C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\filter\CORSFilter.java
 C:\Cursos\Java\Projetos\EdiCursos\src\main\java\com\edicursos\edicursos\rn\AlunoRN.java
