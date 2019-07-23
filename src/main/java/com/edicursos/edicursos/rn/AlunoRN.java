@@ -2,6 +2,7 @@ package com.edicursos.edicursos.rn;
 
 import com.edicursos.edicursos.dao.AlunoDAO;
 import com.edicursos.edicursos.model.Aluno;
+import com.edicursos.edicursos.model.Conta;
 import com.edicursos.edicursos.util.DAOFactory;
 
 /**
@@ -26,6 +27,10 @@ public class AlunoRN {
     
     public void excluir(Integer id) {
         this.alunoDAO.excluir(id);
+    }
+    
+    public Aluno carregarPorConta(Conta conta) {
+        return this.alunoDAO.carregarPorConta(conta);
     }
     
 }
