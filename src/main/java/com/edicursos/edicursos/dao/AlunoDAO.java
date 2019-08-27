@@ -10,6 +10,6 @@ import com.edicursos.edicursos.model.Conta;
 public interface AlunoDAO {
     public void salvar(Aluno aluno);
     public void atualizar(Aluno aluno);
-    public void excluir(Integer id);
+    public void excluir(Aluno aluno);
     public Aluno carregarPorConta(Conta conta);
 }

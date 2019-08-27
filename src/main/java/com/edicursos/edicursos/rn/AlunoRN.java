@@ -25,8 +25,8 @@ public class AlunoRN {
         }
     }
     
-    public void excluir(Integer id) {
-        this.alunoDAO.excluir(id);
+    public void excluir(Aluno aluno) {
+        this.alunoDAO.excluir(aluno);
     }
     
     public Aluno carregarPorConta(Conta conta) {

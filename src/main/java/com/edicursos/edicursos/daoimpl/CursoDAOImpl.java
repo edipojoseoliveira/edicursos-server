@@ -1,12 +1,7 @@
 package com.edicursos.edicursos.daoimpl;
 
-import com.edicursos.edicursos.dao.AlunoDAO;
-import com.edicursos.edicursos.model.Aluno;
-import com.edicursos.edicursos.model.Conta;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import com.edicursos.edicursos.dao.CursoDAO;
+import com.edicursos.edicursos.model.Curso;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,7 +9,7 @@ import org.hibernate.Transaction;
  *
  * @author edipo
  */
-public class AlunoDAOImpl implements AlunoDAO {
+public class CursoDAOImpl implements CursoDAO {
 
     private Session session;
 
@@ -23,11 +18,11 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
     
     @Override
-    public void salvar(Aluno aluno) {
+    public void salvar(Curso curso) {
         Transaction transaction = null;
         try {
             transaction = this.session.beginTransaction();
-            this.session.save(aluno);
+            this.session.save(curso);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) 
@@ -39,11 +34,11 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
 
     @Override
-    public void atualizar(Aluno aluno) {
+    public void atualizar(Curso curso) {
         Transaction transaction = null;
         try {
             transaction = this.session.beginTransaction();
-            this.session.update(aluno);
+            this.session.update(curso);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) 
@@ -55,11 +50,11 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
 
     @Override
-    public void excluir(Aluno aluno) {
+    public void excluir(Curso curso) {
         Transaction transaction = null;
         try {
             transaction = this.session.beginTransaction();
-            this.session.delete(aluno);
+            this.session.delete(curso);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) 
@@ -71,23 +66,8 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
 
     @Override
-    public Aluno carregarPorConta(Conta conta) {
-        try {
-            CriteriaBuilder builder = this.session.getCriteriaBuilder();
-            CriteriaQuery<Aluno> criteria = builder.createQuery(Aluno.class);
-            Root<Aluno> root = criteria.from(Aluno.class);
-            Predicate predicate;
-            
-            predicate = builder.equal(root.get("conta"), conta);
-            
-            criteria.where(predicate);
-            criteria.select(root);
-            Aluno aluno = this.session.createQuery(criteria).setMaxResults(1).getSingleResult();
-            return aluno;
-        } catch (Exception e) {
-            System.out.println("Consulta falhou. Erro: " + e);
-            return null;
-        }
+    public Curso carregar(Integer id) {
+        return this.session.get(Curso.class, id);
     }
     
 }

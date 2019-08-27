@@ -1,5 +1,6 @@
 package com.edicursos.edicursos.ws;
 
+import com.edicursos.edicursos.json.MensagemJson;
 import com.edicursos.edicursos.model.Aluno;
 import com.edicursos.edicursos.rn.AlunoRN;
 
@@ -8,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -21,26 +23,25 @@ public class AlunoWS {
     @GET
     @Path("/carregar/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(value = MediaType.APPLICATION_JSON)
     public Response carregar(@PathParam("id") String id) {
-        return Response.ok("{id: " + id + ", nome: edipo}").status(Response.Status.OK).build();
+        MensagemJson json = new MensagemJson("Aluno com id: " + id);
+        return Response.ok(json).status(Response.Status.OK).build();
     }
     
     @POST
     @Path("/salvar")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(value = MediaType.APPLICATION_JSON)
     public Response salvar(Aluno aluno) {
         try {
-            String result = "Nome: " + aluno.getNome() + 
-                            ", Sobrenome: " + aluno.getSobrenome() + 
-                            ", email: " + aluno.getConta().getEmail() +
-                            ", senha: " + aluno.getConta().getSenha();
-
             AlunoRN alunoRN = new AlunoRN();
             alunoRN.salvar(aluno);
 
-            return Response.status(Response.Status.OK).entity(result).build();
+            return Response.ok(aluno).status(Response.Status.OK).build();
         } catch (Exception e) {
-            return Response.serverError().status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            MensagemJson json = new MensagemJson("Erro ao salvar o aluno!");
+            return Response.ok(json).status(Response.Status.OK).build();
         }    	
     }
     
