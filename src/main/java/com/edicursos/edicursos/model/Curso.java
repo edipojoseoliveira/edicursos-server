@@ -18,21 +18,31 @@ import javax.persistence.OneToMany;
  */
 @Entity(name = "curso")
 public class Curso implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = -3391851192680551918L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "area", length = 100)
+    
+	@Column(name = "area", length = 100)
     private String area;
-    @Column(name = "nome", length = 255)
+    
+	@Column(name = "nome", length = 255)
     private String nome;
-    @Column(name = "descricao", length = 999)
+    
+	@Column(name = "descricao", length = 999)
     private String descricao;
-    @Column(name = "cor", length = 6)
+    
+	@Column(name = "cor", length = 6)
     private String cor;
-    @Column(name = "publicado")
+    
+	@Column(name = "publicado")
     private boolean publicado;
-    @Column(name = "url", length = 100)
+    
+	@Column(name = "url", length = 100)
     private String url;
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Aula.class, 
+    
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Aula.class, 
             mappedBy = "curso", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Aula> aulas;
 

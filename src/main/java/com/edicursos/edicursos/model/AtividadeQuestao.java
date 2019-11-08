@@ -16,12 +16,18 @@ import javax.persistence.ManyToOne;
  */
 @Entity(name = "atividade_questao")
 public class AtividadeQuestao implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = -7179638156145628481L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+	
     @ManyToOne @JoinColumn(name = "idaula")
     private Aula aula;
+    
     @Column(name = "questao", length = 255)
     private String questao;
+    
     @Column(name = "resposta", length = 100)
     private String resposta;
 

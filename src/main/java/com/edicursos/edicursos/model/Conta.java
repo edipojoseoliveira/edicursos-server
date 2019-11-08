@@ -14,10 +14,15 @@ import javax.persistence.Id;
  */
 @Entity(name = "conta")
 public class Conta implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = 3984490618600611806L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+	
     @Column(name = "email", length = 255, nullable = false)
     private String email;
+    
     @Column(name = "senha", length = 10, nullable = false)
     private String senha;
 

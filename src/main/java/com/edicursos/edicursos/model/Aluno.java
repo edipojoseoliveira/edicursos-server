@@ -17,12 +17,18 @@ import javax.persistence.ManyToOne;
  */
 @Entity(name = "aluno")
 public class Aluno implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = 1691744576284377336L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+	
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
+    
     @Column(name = "sobrenome", length = 100, nullable = false)
     private String sobrenome;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idconta")
     private Conta conta;

@@ -20,19 +20,28 @@ import javax.persistence.OneToMany;
  */
 @Entity(name = "aula")
 public class Aula implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = 381208401199188264L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne @JoinColumn(name = "idcurso")
+    
+	@ManyToOne @JoinColumn(name = "idcurso")
     private Curso curso;
-    @Column(name = "nome", length = 255)
+    
+	@Column(name = "nome", length = 255)
     private String nome;
-    @Column(name = "descricao", length = 999)
+    
+	@Column(name = "descricao", length = 999)
     private String descricao;
-    @Column(name = "url", length = 100)
+    
+	@Column(name = "url", length = 100)
     private String url;
-    @Column(name = "tipo")
+    
+	@Column(name = "tipo")
     private Integer tipo;
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = AtividadeQuestao.class,
+    
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = AtividadeQuestao.class,
             mappedBy = "aula", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<AtividadeQuestao> questoes;
 
