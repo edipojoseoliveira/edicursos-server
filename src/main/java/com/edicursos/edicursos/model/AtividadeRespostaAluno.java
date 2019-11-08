@@ -16,15 +16,22 @@ import javax.persistence.ManyToOne;
  */
 @Entity(name = "atividade_resposta_aluno")
 public class AtividadeRespostaAluno implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = -2170289351997199955L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne @JoinColumn(name = "idatividadequestao")
+    
+	@ManyToOne @JoinColumn(name = "idatividadequestao")
     private AtividadeQuestao atividadeQuestao;
-    @ManyToOne @JoinColumn(name = "idalunoaula")
+    
+	@ManyToOne @JoinColumn(name = "idalunoaula")
     private AlunoAula alunoAula;
-    @Column(name = "resposta", length = 100)
+    
+	@Column(name = "resposta", length = 100)
     private String resposta;
-    @Column(name = "certa")
+    
+	@Column(name = "certa")
     private boolean certa;
 
     public Integer getId() {

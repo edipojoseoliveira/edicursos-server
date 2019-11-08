@@ -16,13 +16,19 @@ import javax.persistence.ManyToOne;
  */
 @Entity(name = "aluno_aula")
 public class AlunoAula implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+	private static final long serialVersionUID = 334879533226337315L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne @JoinColumn(name = "idaluno")
+    
+	@ManyToOne @JoinColumn(name = "idaluno")
     private Aluno aluno;
-    @ManyToOne @JoinColumn(name = "idaula")
+    
+	@ManyToOne @JoinColumn(name = "idaula")
     private Aula aula;
-    @Column(name = "situacao")
+    
+	@Column(name = "situacao")
     private Integer situacao;
 
     public Integer getId() {
