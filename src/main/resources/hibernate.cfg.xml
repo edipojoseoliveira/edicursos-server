@@ -14,5 +14,8 @@
       <mapping class="com.edicursos.edicursos.model.Curso" />
       <mapping class="com.edicursos.edicursos.model.Aula" />
       <mapping class="com.edicursos.edicursos.model.AtividadeQuestao" />
+      <mapping class="com.edicursos.edicursos.model.AlunoCurso" />
+      <mapping class="com.edicursos.edicursos.model.AlunoAula" />
+      <mapping class="com.edicursos.edicursos.model.AtividadeRespostaAluno" />
   </session-factory>
 </hibernate-configuration>

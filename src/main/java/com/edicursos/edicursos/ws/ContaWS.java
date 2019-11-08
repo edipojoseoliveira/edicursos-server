@@ -6,7 +6,6 @@ import com.edicursos.edicursos.model.Aluno;
 import com.edicursos.edicursos.model.Conta;
 import com.edicursos.edicursos.rn.AlunoRN;
 import com.edicursos.edicursos.rn.ContaRN;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -33,7 +32,7 @@ public class ContaWS {
                 AlunoRN alunoRN = new AlunoRN();
                 Aluno aluno = alunoRN.carregarPorConta(conta);
                 if (aluno != null) {
-                    ContaJson json = new ContaJson("Usuário encontrado!", aluno.getNome(), aluno.getId().toString());
+                    ContaJson json = new ContaJson("Usuário encontrado!", aluno.getNome(), String.valueOf(aluno.getId()));
                     return Response.ok(json).status(Response.Status.OK).build();
                 } else {
                     MensagemJson json = new MensagemJson("Usuário não encontrar!");
