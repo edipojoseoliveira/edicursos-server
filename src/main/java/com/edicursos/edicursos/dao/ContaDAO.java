@@ -8,4 +8,5 @@ import com.edicursos.edicursos.model.Conta;
  */
 public interface ContaDAO {
     public Conta entrar(String email, String senha);
+    public Conta carregarPorEmail(String email);
 }

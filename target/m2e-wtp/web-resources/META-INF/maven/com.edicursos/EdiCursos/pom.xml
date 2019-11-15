@@ -52,6 +52,13 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901.jdbc4</version>
         </dependency>
+        
+        <!-- E-MAIL -->
+        <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
     </dependencies>
 
 	<!-- Não funcionou no eclipse

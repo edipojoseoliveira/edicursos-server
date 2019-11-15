@@ -20,4 +20,8 @@ public class ContaRN {
         return this.contaDAO.entrar(email, senha);
     }
     
+    public Conta carregarPorEmail(String email) {
+    	return this.contaDAO.carregarPorEmail(email);
+    }
+    
 }

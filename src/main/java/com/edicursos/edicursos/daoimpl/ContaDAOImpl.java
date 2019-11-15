@@ -40,5 +40,25 @@ public class ContaDAOImpl implements ContaDAO {
             return null;
         }
     }
+
+	@Override
+	public Conta carregarPorEmail(String email) {
+		try {
+			CriteriaBuilder builder = this.session.getCriteriaBuilder();
+            CriteriaQuery<Conta> criteria = builder.createQuery(Conta.class);
+            Root<Conta> root = criteria.from(Conta.class);
+            Predicate predicate;
+            
+            predicate = builder.equal(root.get("email"), email);
+            
+            criteria.where(predicate);
+            criteria.select(root);
+            Conta conta = this.session.createQuery(criteria).setMaxResults(1).getSingleResult();
+            return conta;
+		} catch (Exception e) {
+			System.out.println("Consulta falhou. Erro: " + e);
+            return null;
+		}
+	}
     
 }
