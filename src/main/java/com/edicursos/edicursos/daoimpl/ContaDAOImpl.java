@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -60,5 +61,41 @@ public class ContaDAOImpl implements ContaDAO {
             return null;
 		}
 	}
+
+
+
+	@Override
+	public void salvar(Conta conta) {
+        Transaction transaction = null;
+        try {
+            transaction = this.session.beginTransaction();
+            this.session.save(conta);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) 
+                transaction.rollback();
+            System.out.println("Transação falhou. Erro: " + e);
+        } finally {
+            this.session.close();
+        }
+    }
+
+
+
+	@Override
+	public void atualizar(Conta conta) {
+        Transaction transaction = null;
+        try {
+            transaction = this.session.beginTransaction();
+            this.session.update(conta);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) 
+                transaction.rollback();
+            System.out.println("Transação falhou. Erro: " + e);
+        } finally {
+            this.session.close();
+        }
+    }
     
 }

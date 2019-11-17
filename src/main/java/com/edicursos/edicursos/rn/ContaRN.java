@@ -16,6 +16,14 @@ public class ContaRN {
         this.contaDAO = DAOFactory.criarContaDAO();
     }
     
+    public void salvar(Conta conta) {
+    	if (conta.getId() == null || conta.getId() == -1) {
+            this.contaDAO.salvar(conta);
+        } else {
+            this.contaDAO.atualizar(conta);
+        }
+    }
+    
     public Conta entrar(String email, String senha) {
         return this.contaDAO.entrar(email, senha);
     }
