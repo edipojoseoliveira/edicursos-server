@@ -66,6 +66,13 @@
 		    <artifactId>commons-codec</artifactId>
 		    <version>1.10</version>
 		</dependency>
+		
+		<!-- JASPER REPORT -->
+		<dependency>
+		    <groupId>net.sf.jasperreports</groupId>
+		    <artifactId>jasperreports</artifactId>
+		    <version>6.3.0</version>
+		</dependency>
     </dependencies>
 
 	<!-- Não funcionou no eclipse
