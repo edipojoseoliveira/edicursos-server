@@ -37,7 +37,7 @@ public class ContaDAOImpl implements ContaDAO {
             Conta conta = this.session.createQuery(criteria).setMaxResults(1).getSingleResult();
             return conta;
         } catch (Exception e) {
-            System.out.println("Consulta falhou. Erro: " + e);
+            e.printStackTrace();
             return null;
         }
     }
