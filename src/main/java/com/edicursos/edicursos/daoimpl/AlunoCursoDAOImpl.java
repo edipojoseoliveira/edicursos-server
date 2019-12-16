@@ -1,5 +1,7 @@
 package com.edicursos.edicursos.daoimpl;
 
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -25,16 +27,20 @@ public class AlunoCursoDAOImpl implements AlunoCursoDAO {
 			CriteriaBuilder builder = this.session.getCriteriaBuilder();
 			CriteriaQuery<AlunoCurso> criteria = builder.createQuery(AlunoCurso.class);
 			Root<AlunoCurso> root = criteria.from(AlunoCurso.class);
-			Predicate predicate;
+			Predicate predicate = builder.and();
 			
-			predicate = builder.equal(root.get("curso").get("id"), idCurso);
+			predicate = builder.and(predicate, builder.equal(root.get("curso").get("id"), idCurso));
             predicate = builder.and(predicate, builder.equal(root.get("aluno").get("id"), idAluno));
             
             criteria.where(predicate);
             criteria.select(root);
             
-            AlunoCurso alunoCurso = this.session.createQuery(criteria).setMaxResults(1).getSingleResult();
-            return alunoCurso;
+            List<AlunoCurso> listaAlunoCurso = this.session.createQuery(criteria).getResultList();
+            if (listaAlunoCurso != null && !listaAlunoCurso.isEmpty()) {
+            	return listaAlunoCurso.get(0);
+            } else {
+            	return null;
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
