@@ -1,9 +1,11 @@
 package com.edicursos.edicursos.util;
 
+import com.edicursos.edicursos.dao.AlunoAulaDAO;
 import com.edicursos.edicursos.dao.AlunoCursoDAO;
 import com.edicursos.edicursos.dao.AlunoDAO;
 import com.edicursos.edicursos.dao.ContaDAO;
 import com.edicursos.edicursos.dao.CursoDAO;
+import com.edicursos.edicursos.daoimpl.AlunoAulaDAOImpl;
 import com.edicursos.edicursos.daoimpl.AlunoCursoDAOImpl;
 import com.edicursos.edicursos.daoimpl.AlunoDAOImpl;
 import com.edicursos.edicursos.daoimpl.ContaDAOImpl;
@@ -37,6 +39,12 @@ public class DAOFactory {
         AlunoCursoDAOImpl alunoCursoDAOImpl = new AlunoCursoDAOImpl();
         alunoCursoDAOImpl.setSession(HibernateUtil.getSessionFactory().openSession());
         return alunoCursoDAOImpl;
+    }
+    
+    public static AlunoAulaDAO criarAlunoAulaDAO() {
+        AlunoAulaDAOImpl alunoAulaDAOImpl = new AlunoAulaDAOImpl();
+        alunoAulaDAOImpl.setSession(HibernateUtil.getSessionFactory().openSession());
+        return alunoAulaDAOImpl;
     }
     
 }
