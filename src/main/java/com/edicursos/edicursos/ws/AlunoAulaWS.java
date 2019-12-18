@@ -53,13 +53,15 @@ public class AlunoAulaWS {
 			if (alunoAulaSalvo != null) {
 				alunoAulaSalvo.setSituacao(alunoAula.getSituacao());
 				alunoAulaRN.salvar(alunoAulaSalvo);
-				return Response.ok(alunoAulaSalvo).status(Response.Status.OK).build();
+				AlunoAulaJson alunoAulaJson = new AlunoAulaJson("Registro salvo com sucesso!", alunoAulaSalvo.getSituacao());
+				return Response.ok(alunoAulaJson).status(Response.Status.OK).build();
 			} else {
 				alunoAulaRN.salvar(alunoAula);
-				return Response.ok(alunoAula).status(Response.Status.OK).build();
+				AlunoAulaJson alunoAulaJson = new AlunoAulaJson("Registro salvo com sucesso!", alunoAula.getSituacao());
+				return Response.ok(alunoAulaJson).status(Response.Status.OK).build();
 			}
 		} catch (Exception e) {
-			MensagemJson json = new MensagemJson("Erro ao efetuar a inscrição!");
+			MensagemJson json = new MensagemJson("Erro ao efetuar a conclusão da aula!");
             return Response.ok(json).status(Response.Status.OK).build();
 		}
 	}
