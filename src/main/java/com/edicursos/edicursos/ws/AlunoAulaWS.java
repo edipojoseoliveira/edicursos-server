@@ -11,8 +11,14 @@ import javax.ws.rs.core.Response;
 
 import com.edicursos.edicursos.json.AlunoAulaJson;
 import com.edicursos.edicursos.json.MensagemJson;
+import com.edicursos.edicursos.model.Aluno;
 import com.edicursos.edicursos.model.AlunoAula;
+import com.edicursos.edicursos.model.AlunoCurso;
+import com.edicursos.edicursos.model.Aula;
+import com.edicursos.edicursos.model.Curso;
 import com.edicursos.edicursos.rn.AlunoAulaRN;
+import com.edicursos.edicursos.rn.AlunoCursoRN;
+import com.edicursos.edicursos.rn.CursoRN;
 
 /**
 *
@@ -53,16 +59,47 @@ public class AlunoAulaWS {
 			if (alunoAulaSalvo != null) {
 				alunoAulaSalvo.setSituacao(alunoAula.getSituacao());
 				alunoAulaRN.salvar(alunoAulaSalvo);
+				
+				this.atualizarSituacaoAlunoCurso(alunoAulaSalvo.getAluno(), alunoAulaSalvo.getAula().getCurso());
+				
 				AlunoAulaJson alunoAulaJson = new AlunoAulaJson("Registro salvo com sucesso!", alunoAulaSalvo.getSituacao());
 				return Response.ok(alunoAulaJson).status(Response.Status.OK).build();
 			} else {
 				alunoAulaRN.salvar(alunoAula);
+				
+				this.atualizarSituacaoAlunoCurso(alunoAula.getAluno(), alunoAula.getAula().getCurso());
+				
 				AlunoAulaJson alunoAulaJson = new AlunoAulaJson("Registro salvo com sucesso!", alunoAula.getSituacao());
 				return Response.ok(alunoAulaJson).status(Response.Status.OK).build();
 			}
 		} catch (Exception e) {
 			MensagemJson json = new MensagemJson("Erro ao efetuar a conclusão da aula!");
             return Response.ok(json).status(Response.Status.OK).build();
+		}
+	}
+	
+	public void atualizarSituacaoAlunoCurso(Aluno aluno, Curso curso) {
+		try {
+			boolean cursoConcluido = true;
+			CursoRN cursoRN = new CursoRN();
+			curso = cursoRN.carregar(curso.getId());
+			for (Aula aula : curso.getAulas()) {
+				AlunoAulaRN alunoAulaRN = new AlunoAulaRN();
+				AlunoAula alunoAula = alunoAulaRN.consultar(aluno.getId(), aula.getId());
+				if (alunoAula == null || alunoAula.getSituacao() != 1) {
+					cursoConcluido = false;
+					break;
+				}
+			}
+			if (cursoConcluido) {
+				AlunoCursoRN alunoCursoRN = new AlunoCursoRN();
+				AlunoCurso alunoCurso = alunoCursoRN.consultar(curso.getId(), aluno.getId());
+				alunoCurso.setSituacao(2);
+				
+				alunoCursoRN.salvar(alunoCurso);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
