@@ -31,6 +31,18 @@
 		</queryString>
 	</subDataset>
 	<parameter name="PATH_IMAGE" class="java.lang.String"/>
+	<parameter name="NomeDoAluno" class="java.lang.String">
+		<parameterDescription><![CDATA[NomeDoAluno]]></parameterDescription>
+	</parameter>
+	<parameter name="DataDeInicio" class="java.lang.String">
+		<parameterDescription><![CDATA[DataDeInicio]]></parameterDescription>
+	</parameter>
+	<parameter name="DataDeTermino" class="java.lang.String">
+		<parameterDescription><![CDATA[DataDeTermino]]></parameterDescription>
+	</parameter>
+	<parameter name="CargaHoraria" class="java.lang.String">
+		<parameterDescription><![CDATA[CargaHoraria]]></parameterDescription>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -54,7 +66,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Justified" markup="html">
 					<font fontName="SansSerif" size="19.9"/>
 				</textElement>
-				<textFieldExpression><![CDATA["concluiu com sucesso o curso online de Lógica de Programação <br/> com App Inventor no período de <b>31/08/2019</b> a <b>30/11/2019</b> <br/> com carga horária de <b>20</b> horas."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["concluiu com sucesso o curso online de Lógica de Programação <br/> com App Inventor no período de <b>" + $P{DataDeInicio} + "</b> a <b>" + $P{DataDeTermino} + "</b> <br/> com carga horária de <b>" + $P{CargaHoraria} + "</b> horas."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="0" y="166" width="842" height="29" forecolor="#001B44" uuid="c6488a55-7f69-4fc0-83ca-22fe8db00e02"/>
@@ -68,7 +80,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Justified" markup="html">
 					<font fontName="Serif" size="55.4" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Édipo Jose de Oliveira"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{NomeDoAluno}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="0" y="71" width="842" height="39" forecolor="#001B44" uuid="8e129122-2a95-4997-a24d-37bc101f38ee"/>
