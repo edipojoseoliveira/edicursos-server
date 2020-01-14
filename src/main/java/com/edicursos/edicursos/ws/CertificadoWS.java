@@ -15,7 +15,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import com.edicursos.edicursos.model.AlunoCurso;
+import com.edicursos.edicursos.rn.AlunoCursoRN;
 import com.edicursos.edicursos.util.RelatorioUtil;
+import com.ibm.icu.text.SimpleDateFormat;
 
 /**
 *
@@ -32,9 +35,12 @@ public class CertificadoWS {
     @Path("/imprimir/{codigo}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/pdf")
-    public synchronized Response imprimir(@PathParam("codigo") String codigo) {
+    public synchronized Response imprimir(@PathParam("codigo") Integer idAlunoCurso) {
 		try {
-			HashMap<String, String> parametrosRelatorio = this.carregaParametrosRelatorio();
+			AlunoCursoRN alunoCursoRN = new AlunoCursoRN();
+			AlunoCurso alunoCurso = alunoCursoRN.carregar(idAlunoCurso);
+			
+			HashMap<String, String> parametrosRelatorio = this.carregaParametrosCertificado(alunoCurso);
 			
 			Integer tipo = 1;
 			RelatorioUtil relatorioUtil = new RelatorioUtil();
@@ -58,10 +64,16 @@ public class CertificadoWS {
 		}
 	}
 	
-	public HashMap<String, String> carregaParametrosRelatorio() {
+	public HashMap<String, String> carregaParametrosCertificado(AlunoCurso alunoCurso) {
 		HashMap<String, String> parametrosRelatorio = new HashMap<>();
 		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
 			parametrosRelatorio.put("PATH_IMAGE", this.getCaminhoImagens() + "modelo-certificado-01.png");
+			parametrosRelatorio.put("NomeDoAluno", alunoCurso.getAluno().getNome() + " " + alunoCurso.getAluno().getSobrenome());
+			parametrosRelatorio.put("DataDeInicio", sdf.format(alunoCurso.getDataInicio()));
+			parametrosRelatorio.put("DataDeTermino", sdf.format(alunoCurso.getDataTermino()));
+			parametrosRelatorio.put("CargaHoraria", String.valueOf(alunoCurso.getCurso().getCargaHoraria()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

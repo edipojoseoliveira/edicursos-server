@@ -24,4 +24,8 @@ public class AlunoCursoRN {
         }
 	}
 	
+	public AlunoCurso carregar(Integer id) {
+		return this.alunoCursoDAO.carregar(id);
+	}
+	
 }
