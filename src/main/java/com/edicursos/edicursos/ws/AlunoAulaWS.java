@@ -1,5 +1,7 @@
 package com.edicursos.edicursos.ws;
 
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -94,7 +96,9 @@ public class AlunoAulaWS {
 			if (cursoConcluido) {
 				AlunoCursoRN alunoCursoRN = new AlunoCursoRN();
 				AlunoCurso alunoCurso = alunoCursoRN.consultar(curso.getId(), aluno.getId());
+				
 				alunoCurso.setSituacao(2);
+				alunoCurso.setDataTermino(new Date());
 				
 				alunoCursoRN.salvar(alunoCurso);
 			}

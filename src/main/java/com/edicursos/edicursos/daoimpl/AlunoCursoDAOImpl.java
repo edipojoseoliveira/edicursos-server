@@ -79,4 +79,9 @@ public class AlunoCursoDAOImpl implements AlunoCursoDAO {
         }
 	}
 
+	@Override
+	public AlunoCurso carregar(Integer id) {
+		return this.session.get(AlunoCurso.class, id);
+	}
+
 }

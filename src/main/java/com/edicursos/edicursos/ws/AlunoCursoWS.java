@@ -1,5 +1,7 @@
 package com.edicursos.edicursos.ws;
 
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,7 +32,7 @@ public class AlunoCursoWS {
 			AlunoCursoRN alunoCursoRN = new AlunoCursoRN();
 			AlunoCurso alunoCurso = alunoCursoRN.consultar(idCurso, idAluno);
 			if (alunoCurso != null) {
-				AlunoCursoJson json = new AlunoCursoJson("Registro encontrado!", alunoCurso.getSituacao());
+				AlunoCursoJson json = new AlunoCursoJson("Registro encontrado!", alunoCurso.getSituacao(), alunoCurso.getId());
                 return Response.ok(json).status(Response.Status.OK).build();
 			} else {
 				MensagemJson json = new MensagemJson("Registro não encontrar!");
@@ -48,6 +50,10 @@ public class AlunoCursoWS {
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response salvar(AlunoCurso alunoCurso) {
 		try {
+			if (alunoCurso.getDataInicio() == null) {
+				alunoCurso.setDataInicio(new Date());
+			}
+			
 			AlunoCursoRN alunoCursoRN = new AlunoCursoRN();
 			alunoCursoRN.salvar(alunoCurso);
 			
