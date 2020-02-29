@@ -1,14 +1,12 @@
-CREATE TABLE public.aula
+CREATE TABLE public.atividade_questao
 (
     id serial NOT NULL,
-    idcurso integer,
-    nome character varying(255),
-    descricao character varying(999),
-    url character varying(100),
-    tipo integer,
+    idaula integer,
+    questao character varying(255),
+    resposta character varying(100),
     PRIMARY KEY (id),
-    FOREIGN KEY (idcurso)
-        REFERENCES public.curso (id) MATCH SIMPLE
+    FOREIGN KEY (idaula)
+        REFERENCES public.aluno (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
@@ -16,5 +14,5 @@ WITH (
     OIDS = FALSE
 );
 
-ALTER TABLE public.aula
+ALTER TABLE public.atividade_questao
     OWNER to postgres;
