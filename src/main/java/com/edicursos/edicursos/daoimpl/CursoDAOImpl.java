@@ -17,7 +17,6 @@ public class CursoDAOImpl implements CursoDAO {
         this.session = session;
     }
     
-    @Override
     public void salvar(Curso curso) {
         Transaction transaction = null;
         try {
@@ -33,7 +32,6 @@ public class CursoDAOImpl implements CursoDAO {
         }
     }
 
-    @Override
     public void atualizar(Curso curso) {
         Transaction transaction = null;
         try {
@@ -49,7 +47,6 @@ public class CursoDAOImpl implements CursoDAO {
         }
     }
 
-    @Override
     public void excluir(Curso curso) {
         Transaction transaction = null;
         try {
@@ -65,7 +62,6 @@ public class CursoDAOImpl implements CursoDAO {
         }
     }
 
-    @Override
     public Curso carregar(Integer id) {
         return this.session.get(Curso.class, id);
     }

@@ -65,7 +65,7 @@ public class CertificadoWS {
 	}
 	
 	public HashMap<String, String> carregaParametrosCertificado(AlunoCurso alunoCurso) {
-		HashMap<String, String> parametrosRelatorio = new HashMap<>();
+		HashMap<String, String> parametrosRelatorio = new HashMap<String, String>();
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			
