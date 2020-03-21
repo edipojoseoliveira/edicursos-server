@@ -21,7 +21,8 @@ public class AlunoDAOImpl implements AlunoDAO {
     public void setSession(Session session) {
         this.session = session;
     }
-    
+
+    @Override
     public void salvar(Aluno aluno) {
         Transaction transaction = null;
         try {
@@ -37,6 +38,7 @@ public class AlunoDAOImpl implements AlunoDAO {
         }
     }
 
+    @Override
     public void atualizar(Aluno aluno) {
         Transaction transaction = null;
         try {
@@ -52,6 +54,7 @@ public class AlunoDAOImpl implements AlunoDAO {
         }
     }
 
+    @Override
     public void excluir(Aluno aluno) {
         Transaction transaction = null;
         try {
@@ -67,6 +70,7 @@ public class AlunoDAOImpl implements AlunoDAO {
         }
     }
 
+    @Override
     public Aluno carregarPorConta(Conta conta) {
         try {
             CriteriaBuilder builder = this.session.getCriteriaBuilder();

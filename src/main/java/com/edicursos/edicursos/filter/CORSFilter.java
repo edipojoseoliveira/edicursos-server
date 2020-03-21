@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
  */
 public class CORSFilter implements ContainerResponseFilter {
 
+    @Override
     public ContainerResponse filter(ContainerRequest containerRequest, ContainerResponse containerResponse) {
         Response.ResponseBuilder responseBuilder = Response.fromResponse(containerResponse.getResponse());
         

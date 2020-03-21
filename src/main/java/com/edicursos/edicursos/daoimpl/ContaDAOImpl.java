@@ -21,6 +21,7 @@ public class ContaDAOImpl implements ContaDAO {
         this.session = session;
     }
 
+    @Override
     public Conta entrar(String email, String senha) {
         try {
             CriteriaBuilder builder = this.session.getCriteriaBuilder();
@@ -41,6 +42,7 @@ public class ContaDAOImpl implements ContaDAO {
         }
     }
 
+    @Override
 	public Conta carregarPorEmail(String email) {
 		try {
 			CriteriaBuilder builder = this.session.getCriteriaBuilder();
@@ -60,6 +62,7 @@ public class ContaDAOImpl implements ContaDAO {
 		}
 	}
 
+    @Override
 	public void salvar(Conta conta) {
         Transaction transaction = null;
         try {
@@ -75,6 +78,7 @@ public class ContaDAOImpl implements ContaDAO {
         }
     }
 
+    @Override
 	public void atualizar(Conta conta) {
         Transaction transaction = null;
         try {

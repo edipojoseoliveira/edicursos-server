@@ -20,7 +20,8 @@ public class AlunoCursoDAOImpl implements AlunoCursoDAO {
     public void setSession(Session session) {
         this.session = session;
     }
-	
+
+    @Override
 	public AlunoCurso consultar(Integer idCurso, Integer idAluno) {
 		try {
 			CriteriaBuilder builder = this.session.getCriteriaBuilder();
@@ -46,6 +47,7 @@ public class AlunoCursoDAOImpl implements AlunoCursoDAO {
 		}
 	}
 
+    @Override
 	public void salvar(AlunoCurso alunoCurso) {
 		Transaction transaction = null;
         try {
@@ -61,6 +63,7 @@ public class AlunoCursoDAOImpl implements AlunoCursoDAO {
         }
 	}
 
+    @Override
 	public void atualizar(AlunoCurso alunoCurso) {
 		Transaction transaction = null;
         try {
@@ -76,6 +79,7 @@ public class AlunoCursoDAOImpl implements AlunoCursoDAO {
         }
 	}
 
+    @Override
 	public AlunoCurso carregar(Integer id) {
 		return this.session.get(AlunoCurso.class, id);
 	}

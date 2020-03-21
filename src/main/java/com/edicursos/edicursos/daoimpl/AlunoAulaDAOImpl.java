@@ -21,6 +21,7 @@ public class AlunoAulaDAOImpl implements AlunoAulaDAO {
         this.session = session;
     }
 
+    @Override
 	public void salvar(AlunoAula alunoAula) {
 		Transaction transaction = null;
         try {
@@ -36,6 +37,7 @@ public class AlunoAulaDAOImpl implements AlunoAulaDAO {
         }
 	}
 
+    @Override
 	public void atualizar(AlunoAula alunoAula) {
 		Transaction transaction = null;
         try {
@@ -51,6 +53,7 @@ public class AlunoAulaDAOImpl implements AlunoAulaDAO {
         }
 	}
 
+    @Override
 	public AlunoAula consultar(Integer idAluno, Integer idAula) {
 		try {
 			CriteriaBuilder builder = this.session.getCriteriaBuilder();
